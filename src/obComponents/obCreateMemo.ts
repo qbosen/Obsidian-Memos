@@ -53,6 +53,8 @@ export async function waitForInsert(MemoContent: string, isList: boolean): Promi
   } else if (!isList && DefaultMemoComposition != '') {
     newEvent = `- ` + DefaultMemoComposition.replace(/{TIME}/g, timeText).replace(/{CONTENT}/g, removeEnter);
   }
+  // add tab before all
+  newEvent = "\t" + newEvent;
 
   const dailyNotes = await getAllDailyNotes();
   const existingFile = getDailyNote(date, dailyNotes);
